@@ -9,9 +9,11 @@ import {
 } from "react-native";
 import { WebView } from "react-native-webview";
 import { useNavigation } from "@react-navigation/native";
+import useAuth from "../hooks/useAuth";
 
 export default function LoginScreen() {
   const [uri, setURL] = useState(false);
+  const { setReload } = useAuth();
   const navigation = useNavigation();
   useEffect(() => {
     const handleRedirect = () => {
@@ -31,6 +33,10 @@ export default function LoginScreen() {
     });
   });
 
+  const handleReload = () => {
+    setReload(Math.random()), setURL(false);
+  };
+
   const handleOpenURL = () => {
     Alert.alert(
       "Autenticado correctamente",
@@ -39,7 +45,7 @@ export default function LoginScreen() {
         {
           text: "OK",
           onPress: () => {
-            setURL(false);
+            handleReload();
           },
         },
       ],

@@ -22,11 +22,12 @@ const getUserGoogle = async (setUser) => {
   } catch (error) {
     console.log(error);
     setUser(null);
-  }
+  } 
 };
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     getUserGoogle(setUser);
@@ -34,7 +35,7 @@ export const AuthProvider = ({ children }) => {
     return () => {
       Linking.removeAllListeners("url");
     };
-  }, [setUser]);
+  }, [reload]);
 
   const handleLogout = async () => {
     try {
@@ -56,6 +57,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         user,
         handleLogout,
+        setReload,
       }}
     >
       {children}
