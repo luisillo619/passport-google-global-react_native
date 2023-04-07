@@ -6,7 +6,6 @@ const AuthContext = createContext({});
 const API_URL = "https://079d-189-216-183-37.ngrok.io";
 const OK_BUTTON = { text: "OK" };
 
-
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
 
@@ -47,7 +46,7 @@ export const AuthProvider = ({ children }) => {
         user,
         setUser,
         handleLogout,
-        getUserGoogle
+        getUserGoogle,
       }}
     >
       {children}
