@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Alert, Linking } from "react-native";
+import { Alert } from "react-native";
 
 const AuthContext = createContext({});
 const API_URL = "https://079d-189-216-183-37.ngrok.io";
