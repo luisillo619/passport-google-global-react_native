@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import HomeScreen from "../screens/HomeScreen";
-import LoginScreen from "../screens/LoginScreen";
+import HomeScreen from "../screens/HomeScreen/HomeScreen";
+import LoginScreen from "../screens/LoginScreen/LoginScreen";
 import useAuth from "../hooks/useAuth";
 import ChatScreen from "../screens/ChatScreen";
+
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -14,7 +15,7 @@ export default function StackNavigator({ setUser }) {
     setUser(user);
   }, [user]);
   return (
-    <Navigator>
+    <Navigator screenOptions={{ headerShown: false }}>
       {user ? (
         <>
           <Screen name="home" component={HomeScreen} />
@@ -25,11 +26,9 @@ export default function StackNavigator({ setUser }) {
           <Screen
             name="login"
             component={LoginScreen}
-            options={{ headerShown: false }}
           />
         </>
       )}
     </Navigator>
   );
 }
-
